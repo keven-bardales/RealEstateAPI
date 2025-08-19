@@ -11,8 +11,8 @@
         Task<bool> ExistsAsync(int id, CancellationToken cancellationToken = default); // Task<bool>
 
         // Commands
-        Task<int?> AddAsync(Property property, CancellationToken cancellationToken = default);
-        Task<int?> UpdateAsync(Property property, CancellationToken cancellationToken = default);
+        Task<Property?> AddAsync(Property property, CancellationToken cancellationToken = default);
+        Task<Property?> UpdateAsync(Property property, CancellationToken cancellationToken = default);
         Task<bool> DeleteAsync(Property property, CancellationToken cancellationToken = default);
 
         // Unit of Work

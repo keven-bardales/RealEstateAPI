@@ -46,6 +46,9 @@ builder.Services.AddSwaggerGen(options =>
 
 // Configure Entity Framework with InMemory Database
 // Sin llaves extras, todo en una línea
+builder.Services.AddDbContext<AppDbContext>(opts =>
+    opts.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 
 
 
@@ -81,16 +84,23 @@ builder.Logging.AddConsole();
 
 var app = builder.Build();
 
-// Ensure database is created and seeded
+
+
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    context.Database.EnsureCreated();
-
-    // Log that database was initialized
-    var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
-    logger.LogInformation("Database initialized with {Count} properties", context.Properties.Count());
+    try
+    {
+        // Will throw if cannot connect
+        var canConnect = await context.Database.CanConnectAsync();
+        Console.WriteLine($"Database connection ok: {canConnect}");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Database connection failed: {ex.Message}");
+    }
 }
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -113,7 +123,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.MapHealthChecks("/health");
 
 // Add a welcome endpoint
 app.MapGet("/", () => Results.Redirect("/swagger"))

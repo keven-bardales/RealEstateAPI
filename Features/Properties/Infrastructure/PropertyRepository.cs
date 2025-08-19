@@ -2,6 +2,7 @@
 using RealEstateAPI.Common.Infrastructure;
 using RealEstateAPI.Features.Properties.Domain;
 using System;
+using System.Threading.Tasks;
 
 namespace RealEstateAPI.Features.Properties.Infrastructure
 {
@@ -35,7 +36,7 @@ namespace RealEstateAPI.Features.Properties.Infrastructure
                 .ToListAsync(cancellationToken);
         }
 
-        public async Task<List<Property>> GetByCityAsync(string city, CancellationToken cancellationToken = default)
+        public async Task<  List<Property>> GetByCityAsync(string city, CancellationToken cancellationToken = default)
         {
             return await _context.Properties
                 .Where(p => p.City.ToLower() == city.ToLower())
@@ -52,18 +53,33 @@ namespace RealEstateAPI.Features.Properties.Infrastructure
         public async Task<Property> AddAsync(Property property, CancellationToken cancellationToken = default)
         {
             await _context.Properties.AddAsync(property, cancellationToken);
-            return property.Id;
+
+
+            return property;
         }
 
-        public void UpdateAsync(Property property)
+        public async Task<Property> UpdateAsync(Property property, CancellationToken ct = default)
         {
             _context.Properties.Update(property);
 
+            await _context.SaveChangesAsync(ct);
+
+            return property;
         }
 
-        public void DeleteAsync(Property property)
+
+        public async Task <bool> DeleteAsync(Property property, CancellationToken cancellationToken = default)
         {
-            _context.Properties.Remove(property);
+           _context.Properties.Remove(property);
+
+           var result = await _context.SaveChangesAsync();
+
+            if (result == 0)
+            {
+                throw new Exception("Failed to delete property");
+            }
+
+            return true;
 
         }
 
