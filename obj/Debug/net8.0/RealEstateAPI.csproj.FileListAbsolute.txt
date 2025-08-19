@@ -1,0 +1,9 @@
+C:\Users\MSI-LAPTOP\source\repos\RealEstateAPI\obj\Debug\net8.0\RealEstateAPI.csproj.AssemblyReference.cache
+C:\Users\MSI-LAPTOP\source\repos\RealEstateAPI\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\MSI-LAPTOP\source\repos\RealEstateAPI\obj\Debug\net8.0\RealEstateAPI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\MSI-LAPTOP\source\repos\RealEstateAPI\obj\Debug\net8.0\RealEstateAPI.AssemblyInfoInputs.cache
+C:\Users\MSI-LAPTOP\source\repos\RealEstateAPI\obj\Debug\net8.0\RealEstateAPI.AssemblyInfo.cs
+C:\Users\MSI-LAPTOP\source\repos\RealEstateAPI\obj\Debug\net8.0\RealEstateAPI.csproj.CoreCompileInputs.cache
+C:\Users\MSI-LAPTOP\source\repos\RealEstateAPI\obj\Debug\net8.0\RealEstateAPI.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\MSI-LAPTOP\source\repos\RealEstateAPI\obj\Debug\net8.0\RealEstateAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\MSI-LAPTOP\source\repos\RealEstateAPI\obj\Debug\net8.0\RealEstateAPI.sourcelink.json
