@@ -1,0 +1,7 @@
+.vs/
+*.vsidx
+*.db
+*.db-shm
+*.db-wal
+*.cache
+fileContentIndex/
