@@ -52,18 +52,21 @@ namespace RealEstateAPI.Features.Properties.Infrastructure
         public async Task<Property> AddAsync(Property property, CancellationToken cancellationToken = default)
         {
             await _context.Properties.AddAsync(property, cancellationToken);
-            return property;
+            return property.Id;
         }
 
-        public void Update(Property property)
+        public void UpdateAsync(Property property)
         {
             _context.Properties.Update(property);
+
         }
 
-        public void Delete(Property property)
+        public void DeleteAsync(Property property)
         {
             _context.Properties.Remove(property);
+
         }
+
 
         public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {

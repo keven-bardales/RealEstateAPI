@@ -18,53 +18,43 @@ namespace RealEstateAPI.Common.Infrastructure
             // Property Configuration
             modelBuilder.Entity<Property>(entity =>
             {
-                entity.ToTable("Properties");
-
+                
                 entity.HasKey(e => e.Id);
-
+                
                 entity.Property(e => e.Id)
                     .ValueGeneratedOnAdd();
-
+                
                 entity.Property(e => e.Address)
                     .IsRequired()
                     .HasMaxLength(200);
-
+                
                 entity.Property(e => e.City)
                     .IsRequired()
                     .HasMaxLength(100);
-
+                
                 entity.Property(e => e.State)
                     .IsRequired()
                     .HasMaxLength(2);
-
+                
                 entity.Property(e => e.ZipCode)
                     .IsRequired()
                     .HasMaxLength(10);
-
+                
                 entity.Property(e => e.Price)
                     .HasPrecision(18, 2)
                     .IsRequired();
-
+                
                 entity.Property(e => e.MonthlyRent)
                     .HasPrecision(18, 2)
                     .IsRequired();
-
+                
                 entity.Property(e => e.Bathrooms)
                     .HasPrecision(3, 1)
                     .IsRequired();
-
+                
                 entity.Property(e => e.PropertyType)
                     .HasMaxLength(50)
                     .IsRequired();
-
-                entity.HasIndex(e => e.City)
-                    .HasDatabaseName("IX_Properties_City");
-
-                entity.HasIndex(e => e.IsAvailable)
-                    .HasDatabaseName("IX_Properties_IsAvailable");
-
-                entity.HasIndex(e => new { e.City, e.IsAvailable })
-                    .HasDatabaseName("IX_Properties_City_IsAvailable");
             });
 
             // Seed Data

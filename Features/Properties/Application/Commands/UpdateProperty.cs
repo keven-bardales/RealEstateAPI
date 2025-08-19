@@ -81,7 +81,7 @@ namespace RealEstateAPI.Features.Properties.Application.Commands
                     request.PropertyType
                 ));
 
-                _repository.Update(property);
+                await _repository.UpdateAsync(property);
                 await _repository.SaveChangesAsync(cancellationToken);
 
                 return new UpdatePropertyResult(true, "Property updated successfully");

@@ -46,8 +46,9 @@ builder.Services.AddSwaggerGen(options =>
 
 // Configure Entity Framework with InMemory Database
 // Sin llaves extras, todo en una línea
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseInMemoryDatabase("RealEstateDB"));
+
+
+
 // Register Repository
 builder.Services.AddScoped<IPropertyRepository, PropertyRepository>();
 

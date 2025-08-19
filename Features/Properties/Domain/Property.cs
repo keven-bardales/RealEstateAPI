@@ -76,6 +76,22 @@
                 throw new PropertyDomainException($"Year built must be between 1800 and {DateTime.Now.Year}");
         }
 
+        public void Update(PropertyUpdateData updateData)
+        {
+            Address = updateData.Address ?? Address;
+            City = updateData.City ?? City;
+            State = updateData.State ?? State;
+            ZipCode = updateData.ZipCode ?? ZipCode;
+            Price = updateData.Price ?? Price;
+            MonthlyRent = updateData.MonthlyRent ?? MonthlyRent;
+            Bedrooms = updateData.Bedrooms ?? Bedrooms;
+            Bathrooms = updateData.Bathrooms ?? Bathrooms;
+            SquareFeet = updateData.SquareFeet ?? SquareFeet;
+            YearBuilt = updateData.YearBuilt ?? YearBuilt;
+            PropertyType = updateData.PropertyType ?? PropertyType;
+            LastUpdatedUtc = DateTime.UtcNow;
+        }
+
         public void MarkAsAvailable() => IsAvailable = true;
         public void MarkAsOccupied() => IsAvailable = false;
     }
@@ -92,6 +108,20 @@
         decimal Bathrooms,
         int SquareFeet,
         int YearBuilt,
+        string? PropertyType = null
+    );
+
+    public record PropertyUpdateData(
+        string? Address = null,
+        string? City = null,
+        string? State = null,
+        string? ZipCode = null,
+        decimal? Price = null,
+        decimal? MonthlyRent = null,
+        int? Bedrooms = null,
+        decimal? Bathrooms = null,
+        int? SquareFeet = null,
+        int? YearBuilt = null,
         string? PropertyType = null
     );
 

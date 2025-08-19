@@ -6,7 +6,7 @@
         // Queries
         Task<Property> GetByIdAsync(int id, CancellationToken cancellationToken = default);
         Task<List<Property>> GetAllAsync(CancellationToken cancellationToken = default);
-        Task<List<Property>> GetAvailableAsync(string city, CancellationToken cancellationToken = default);
+        Task<List<Property>> GetAvailableAsync(CancellationToken cancellationToken = default);
         Task<List<Property>> GetByCityAsync(string city, CancellationToken cancellationToken = default);
         Task<bool> ExistsAsync(int id, CancellationToken cancellationToken = default); // Task<bool>
 
